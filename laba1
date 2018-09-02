@@ -1,0 +1,47 @@
+def division(a,b):
+    if(a<0 or b<0):
+        print("error")
+    if(a%b==0):
+        return True
+    else:
+        return False
+print("enter 2 number")
+
+a = int(input())
+b = int(input())
+
+if(division(a,b)==True):
+    print("correct")
+else:
+    print("incorrect")
+
+______________________________________
+import math
+def simpleDigits(M, N):
+    N += 1
+    sieve = set(range(3, N, 2))
+    sieve.add(2)
+
+    for i in range(3, int(math.sqrt(N)), 2):
+        if i in sieve:
+            sieve -= set(range(2*i, N, i))
+
+    return sorted(i for i in sieve if M <= i)
+
+
+print(simpleDigits(10, 5000))
+________________________________________
+arr = ['a', ['c', 1, 3], ['f', 7, [4, '4']], [{'lalala': 111}]]
+
+res = []
+
+def recurs(arr):
+
+    for elem in arr:
+        if type(elem) == type(list()):
+           recurs(elem)
+        else:
+            res.append(elem)
+
+recurs(arr)
+print(res)

@@ -1,0 +1,45 @@
+import json
+import random
+import locale
+def task1(file):
+
+    lines =open(file,encoding='cp1251').read().splitlines()
+    myline =random.choice(lines)
+    print(myline)
+
+def task2():
+    b1=open("b1.txt",'w')
+    b2=open("b2.txt",'w')
+    f = open('file.txt').read().splitlines()
+    for i in range(len(f)):
+        if(i%2==0):
+            b2.write(f[i].lower()+'\n')
+        else:
+            b1.write(f[i].upper()+'\n')
+    b1.close()
+    b2.close()
+
+
+task1('file.txt')
+task2()
+_________________________________________________________________-
+import re
+import collections
+import os
+import xml.etree.ElementTree as et
+def find_equal(file):
+    words = list((open(file).read().lower()).split())
+    return collections.Counter(words)
+
+voc = find_equal("file.txt")
+
+
+root = et.Element("root")
+doc = et.SubElement(root, "doc")
+p =0
+for key  in  voc:
+    et.SubElement(doc,"field"+str(p),name = key).text = str(voc[key])
+
+    p+=1
+tree = et.ElementTree(root)
+tree.write("list.xml")

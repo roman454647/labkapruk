@@ -1,11 +1,21 @@
 def division(a,b):
-    if(a<0 or b<0):
-        print("error")
-    if(a%b==0):
+    try:
+        assert a>0 and b>0 and a%b==0
         return True
-    else:
-        return False
+    except:
+        print("Invalid input entered")
+
+
 print("enter 2 number")
+
+a = int(input())
+b = int(input())
+
+if(division(a,b)==True):
+    print("correct")
+else:
+    print("incorrect")
+
 
 a = int(input())
 b = int(input())
